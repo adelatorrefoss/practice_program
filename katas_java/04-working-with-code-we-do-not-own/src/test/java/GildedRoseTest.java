@@ -61,6 +61,17 @@ public class GildedRoseTest {
         assertItemAreEquals(crapApple, updatedItem);
     }
 
+    @Test
+    public void should_never_be_quality_negative_in_passed_products() {
+        Item crapApple = createAnItem("apple", 0, 1);
+
+        GildedRose store = new GildedRose(singletonList(crapApple));
+
+        store.updatesInventory();
+
+        Item updatedItem = createAnItem("apple", -1, 0);
+        assertItemAreEquals(crapApple, updatedItem);
+    }
 
 
     private Item createAnItem(String name, int sellIn, int quality) {
