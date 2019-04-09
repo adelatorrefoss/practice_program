@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class GildedRose {
 
-    private Item item;
     private ArrayList<Item> items;
 
     public GildedRose(Item item) {
@@ -21,7 +20,7 @@ public class GildedRose {
     }
 
     public void updatesInventory() {
-        items.stream().forEach(item -> {
+        items.forEach(item -> {
             item.sellIn -= 1;
             item.quality -= 1;
         });
