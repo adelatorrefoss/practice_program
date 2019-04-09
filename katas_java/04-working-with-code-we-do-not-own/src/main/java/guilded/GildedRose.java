@@ -22,7 +22,9 @@ public class GildedRose {
     public void updatesInventory() {
         items.forEach(item -> {
             item.sellIn -= 1;
-            item.quality -= 1;
+            if (item.sellIn < 0) {
+                item.quality -= 2;
+            } else item.quality -= 1;
         });
     }
 }

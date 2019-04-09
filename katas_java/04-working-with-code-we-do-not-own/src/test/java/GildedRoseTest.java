@@ -40,14 +40,14 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void when_sell_by_date_has_passed_quality_decrease_twice_as_fast() {
+    public void today_is_the_last_day_to_sell_quality_decrease_twice_as_fast() {
         Item sellByDatePassed = createAnItem("apple", 0, 10);
 
         GildedRose store = new GildedRose(singletonList(sellByDatePassed));
 
         store.updatesInventory();
 
-        Item updatedItem = createAnItem("apple", 0, 8);
+        Item updatedItem = createAnItem("apple", -1, 8);
         assertItemAreEquals(sellByDatePassed, updatedItem);
     }
 
