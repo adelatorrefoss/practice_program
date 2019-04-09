@@ -22,11 +22,15 @@ public class GildedRose {
     public void updatesInventory() {
         items.forEach(item -> {
             item.sellIn -= 1;
-            if (item.sellIn < 0) {
-                item.quality -= 2;
-            } else {
+
+            item.quality -= 1;
+            if (hasExpired(item)) {
                 item.quality -= 1;
             }
         });
+    }
+
+    private boolean hasExpired(Item item) {
+        return item.sellIn < 0;
     }
 }
