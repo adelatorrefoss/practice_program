@@ -16,9 +16,9 @@ public class GildedRoseTest {
 
         store.updatesInventory();
 
-        assertThat(item.name, is("name"));
-        assertThat(item.quality, is(0));
-        assertThat(item.sellIn, is (0));
+        Item newExpectedItem = new Item("name", 0, 0);
+
+        assertItemAreEquals(item, newExpectedItem);
     }
 
     @Test
@@ -34,20 +34,21 @@ public class GildedRoseTest {
 
         store.updatesInventory();
 
-        assertThat(apple.name, is("apple"));
-        assertThat(apple.quality, is(0));
-        assertThat(apple.sellIn, is (0));
+        Item updatedApple = new Item("apple", 0, 0);
+        assertItemAreEquals(apple, updatedApple);
 
-        assertThat(orange.name, is("orange"));
-        assertThat(orange.quality, is(19));
-        assertThat(orange.sellIn, is (4));
+        Item updatedOrange = new Item("orange", 4, 19);
+        assertItemAreEquals(orange, updatedOrange);
+    }
+
+    private void assertItemAreEquals(Item actual, Item expected) {
+        assertThat(actual.name, is(expected.name));
+        assertThat(actual.quality, is(expected.quality));
+        assertThat(actual.sellIn, is (expected.sellIn));
     }
 
 
 }
-
-
-// 2 items
 
 
 // date has passed, quality degrades twice as fast
