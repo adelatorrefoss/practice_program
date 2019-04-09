@@ -2,10 +2,8 @@ import guilded.GildedRose;
 import items.Item;
 import org.junit.Test;
 
-import java.util.Collections;
-
 import static java.util.Arrays.asList;
-import static java.util.Collections.*;
+import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -61,6 +59,4 @@ public class GildedRoseTest {
         assertThat(actual.quality, is(expected.quality));
         assertThat(actual.sellIn, is(expected.sellIn));
     }
-
-
 }
