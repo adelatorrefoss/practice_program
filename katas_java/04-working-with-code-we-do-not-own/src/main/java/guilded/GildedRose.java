@@ -20,14 +20,24 @@ public class GildedRose {
     }
 
     public void updatesInventory() {
-        items.forEach(item -> {
-            item.sellIn -= 1;
+        items.forEach(this::updateItem);
+    }
 
-            item.quality -= 1;
-            if (hasExpired(item)) {
-                item.quality -= 1;
-            }
-        });
+    private void updateItem(Item item) {
+        decreaseSellIn(item);
+
+        decreaseQualityByOne(item);
+        if (hasExpired(item)) {
+            decreaseQualityByOne(item);
+        }
+    }
+
+    private void decreaseQualityByOne(Item item) {
+        item.quality -= 1;
+    }
+
+    private void decreaseSellIn(Item item) {
+        item.sellIn -= 1;
     }
 
     private boolean hasExpired(Item item) {
