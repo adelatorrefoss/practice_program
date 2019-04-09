@@ -1,4 +1,4 @@
-import guilded.GuildedRose;
+import guilded.GildedRose;
 import items.Item;
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ public class GildedRoseTest {
     @Test
     public void decrease_item_value() {
         Item item = new Item("name", 1, 1);
-        GuildedRose store = new GuildedRose(item);
+        GildedRose store = new GildedRose(item);
 
         store.updatesInventory();
 
@@ -30,7 +30,7 @@ public class GildedRoseTest {
         ArrayList<Item> items = new ArrayList<>();
         items.add(apple);
         items.add(orange);
-        GuildedRose store = new GuildedRose(items);
+        GildedRose store = new GildedRose(items);
 
         store.updatesInventory();
 
