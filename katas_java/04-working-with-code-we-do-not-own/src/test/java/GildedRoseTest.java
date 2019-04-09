@@ -2,7 +2,10 @@ import guilded.GildedRose;
 import items.Item;
 import org.junit.Test;
 
+import java.util.Collections;
+
 import static java.util.Arrays.asList;
+import static java.util.Collections.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -36,6 +39,19 @@ public class GildedRoseTest {
         assertItemAreEquals(orange, updatedOrange);
     }
 
+    @Test
+    public void when_sell_by_date_has_passed_quality_decrease_twice_as_fast() {
+        Item sellByDatePassed = createAnItem("apple", 0, 10);
+
+        GildedRose store = new GildedRose(singletonList(sellByDatePassed));
+
+        store.updatesInventory();
+
+        Item updatedItem = createAnItem("apple", 0, 8);
+        assertItemAreEquals(sellByDatePassed, updatedItem);
+    }
+
+
     private Item createAnItem(String name, int sellIn, int quality) {
         return new Item(name, sellIn, quality);
     }
@@ -48,7 +64,3 @@ public class GildedRoseTest {
 
 
 }
-
-
-// date has passed, quality degrades twice as fast
-//
