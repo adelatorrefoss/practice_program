@@ -3,19 +3,19 @@ package guilded;
 import items.Item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GildedRose {
 
-    private ArrayList<Item> items;
+    private List<Item> items;
 
     public GildedRose(Item item) {
-        ArrayList<Item> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         items.add(item);
         this.items = items;
     }
 
-    public GildedRose(ArrayList<Item> items) {
-
+    public GildedRose(List<Item> items) {
         this.items = items;
     }
 
