@@ -12,12 +12,10 @@ import java.util.List;
 
 public class BirthdayService {
 
-    private FileEmployeeRepository employeeRepository;
-
     public void sendGreetings(String fileName, OurDate ourDate,
                               String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
 
-        employeeRepository = new FileEmployeeRepository();
+        FileEmployeeRepository employeeRepository = new FileEmployeeRepository();
         List<Employee> employeeList = employeeRepository.listEmployees(fileName);
 
         for (Employee employee : employeeList) {
