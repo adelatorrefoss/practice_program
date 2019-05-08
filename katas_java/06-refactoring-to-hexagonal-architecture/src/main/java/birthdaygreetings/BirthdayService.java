@@ -20,11 +20,21 @@ public class BirthdayService {
     public void sendGreetings(String fileName, OurDate ourDate,
             String smtpHost, int smtpPort) throws IOException, ParseException,
             AddressException, MessagingException {
-        BufferedReader in = new BufferedReader(new FileReader(fileName));
-        String str = "";
-        str = in.readLine(); // skip header
-        List<Employee> employeeList = new ArrayList<>();
 
+        List<Employee> employeeList = listEmployees(fileName);
+
+        for (Employee employee: employeeList) {
+            if (employee.isBirthday(ourDate)) {
+                sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
+            }
+        }
+    }
+
+    private List<Employee> listEmployees(String fileName) throws IOException, ParseException {
+        List<Employee> employeeList = new ArrayList<>();
+        String str;
+        BufferedReader in = new BufferedReader(new FileReader(fileName));
+        in.readLine(); // skip header file
         while ((str = in.readLine()) != null) {
             String[] employeeData = parseEmployeeData(str);
 
@@ -32,12 +42,7 @@ public class BirthdayService {
 
             employeeList.add(employee);
         }
-
-        for (Employee employee: employeeList) {
-            if (employee.isBirthday(ourDate)) {
-                sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
-            }
-        }
+        return employeeList;
     }
 
     private Employee createEmployeeFromData(String[] employeeData) throws ParseException {
