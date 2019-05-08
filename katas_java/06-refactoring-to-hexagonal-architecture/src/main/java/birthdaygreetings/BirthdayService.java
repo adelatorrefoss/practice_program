@@ -4,7 +4,6 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
@@ -16,8 +15,7 @@ public class BirthdayService {
     private FileEmployeeRepository employeeRepository;
 
     public void sendGreetings(String fileName, OurDate ourDate,
-                              String smtpHost, int smtpPort) throws IOException, ParseException,
-            AddressException, MessagingException {
+                              String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
 
         employeeRepository = new FileEmployeeRepository();
         List<Employee> employeeList = employeeRepository.listEmployees(fileName);
@@ -41,7 +39,7 @@ public class BirthdayService {
 
     private void sendMessage(String smtpHost, int smtpPort, String sender,
                              String subject, String body, String recipient)
-            throws AddressException, MessagingException {
+            throws MessagingException {
         // Create a mail session
         java.util.Properties props = new java.util.Properties();
         props.put("mail.smtp.host", smtpHost);
