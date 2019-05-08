@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -21,10 +23,13 @@ public class BirthdayService {
         BufferedReader in = new BufferedReader(new FileReader(fileName));
         String str = "";
         str = in.readLine(); // skip header
+        List<Employee> employeeList = new ArrayList<>();
         while ((str = in.readLine()) != null) {
             String[] employeeData = parseEmployeeData(str);
 
             Employee employee = createEmployeeFromData(employeeData);
+
+            employeeList.add(employee);
 
             if (employee.isBirthday(ourDate)) {
                 sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
