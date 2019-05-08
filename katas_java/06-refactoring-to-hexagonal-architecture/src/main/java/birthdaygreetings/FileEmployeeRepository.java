@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileEmployeeRepository {
+public class FileEmployeeRepository implements EmployeeRepository {
 
     private String fileName;
 
@@ -15,6 +15,7 @@ public class FileEmployeeRepository {
         this.fileName = fileName;
     }
 
+    @Override
     public List<Employee> listEmployees() throws IOException, ParseException {
         List<Employee> employeeList = new ArrayList<>();
         String str;
