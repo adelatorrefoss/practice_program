@@ -19,11 +19,10 @@ public class BirthdayService {
     }
 
 
-    public void sendGreetings(String fileName, OurDate ourDate,
+    public void sendGreetings(OurDate ourDate,
                               String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
 
-        employeeRepository = new FileEmployeeRepository(fileName);
-        List<Employee> employeeList = employeeRepository.listEmployees();
+        List<Employee> employeeList = this.employeeRepository.listEmployees();
 
         for (Employee employee : employeeList) {
             if (employee.isBirthday(ourDate)) {
@@ -71,7 +70,7 @@ public class BirthdayService {
     public static void main(String[] args) {
         BirthdayService service = new BirthdayService(new FileEmployeeRepository("employee_data.txt"));
         try {
-            service.sendGreetings("employee_data.txt",
+            service.sendGreetings(
                     new OurDate("2008/10/08"), "localhost", 25);
         } catch (Exception e) {
             e.printStackTrace();
