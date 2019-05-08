@@ -16,9 +16,7 @@ public class FileEmployeeRepository {
         in.readLine(); // skip header file
         while ((str = in.readLine()) != null) {
             String[] employeeData = parseEmployeeData(str);
-
             Employee employee = createEmployeeFromData(employeeData);
-
             employeeList.add(employee);
         }
         return employeeList;
