@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface EmployeeRepository {
     List<Employee> listEmployees() throws IOException, ParseException;
+    List<Employee> listBirthdayEmployee(OurDate currentDate) throws IOException, ParseException;
 }

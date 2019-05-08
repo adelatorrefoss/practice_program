@@ -22,12 +22,10 @@ public class BirthdayService {
     public void sendGreetings(OurDate ourDate,
                               String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
 
-        List<Employee> employeeList = this.employeeRepository.listEmployees();
+        List<Employee> employeeList = this.employeeRepository.listBirthdayEmployee(ourDate);
 
         for (Employee employee : employeeList) {
-            if (employee.isBirthday(ourDate)) {
-                sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
-            }
+            sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
         }
     }
 
