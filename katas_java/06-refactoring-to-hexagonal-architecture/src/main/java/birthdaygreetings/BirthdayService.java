@@ -22,18 +22,33 @@ public class BirthdayService {
         String str = "";
         str = in.readLine(); // skip header
         while ((str = in.readLine()) != null) {
-            String[] employeeData = str.split(", ");
-            Employee employee = new Employee(employeeData[1], employeeData[0],
-                    employeeData[2], employeeData[3]);
+            String[] employeeData = parseEmployeeData(str);
+
+            Employee employee = createEmployeeFromData(employeeData);
+
             if (employee.isBirthday(ourDate)) {
-                String recipient = employee.getEmail();
-                String body = "Happy Birthday, dear %NAME%!".replace("%NAME%",
-                        employee.getFirstName());
-                String subject = "Happy Birthday!";
-                sendMessage(smtpHost, smtpPort, "sender@here.com", subject,
-                        body, recipient);
+                sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
             }
         }
+    }
+
+    private Employee createEmployeeFromData(String[] employeeData) throws ParseException {
+        return new Employee(employeeData[1], employeeData[0],
+                        employeeData[2], employeeData[3]);
+    }
+
+    private String[] parseEmployeeData(String str) {
+        return str.split(", ");
+    }
+
+    private void sendHappyBirthdayEmail(String smtpHost, int smtpPort, Employee employee) throws MessagingException {
+        String recipient = employee.getEmail();
+        String body = "Happy Birthday, dear %NAME%!".replace("%NAME%",
+                employee.getFirstName());
+        String subject = "Happy Birthday!";
+
+        sendMessage(smtpHost, smtpPort, "sender@here.com", subject,
+                body, recipient);
     }
 
     private void sendMessage(String smtpHost, int smtpPort, String sender,
