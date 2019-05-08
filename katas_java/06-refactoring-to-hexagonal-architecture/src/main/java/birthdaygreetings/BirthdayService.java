@@ -15,8 +15,8 @@ public class BirthdayService {
     public void sendGreetings(String fileName, OurDate ourDate,
                               String smtpHost, int smtpPort) throws IOException, ParseException, MessagingException {
 
-        FileEmployeeRepository employeeRepository = new FileEmployeeRepository();
-        List<Employee> employeeList = employeeRepository.listEmployees(fileName);
+        FileEmployeeRepository employeeRepository = new FileEmployeeRepository(fileName);
+        List<Employee> employeeList = employeeRepository.listEmployees();
 
         for (Employee employee : employeeList) {
             if (employee.isBirthday(ourDate)) {

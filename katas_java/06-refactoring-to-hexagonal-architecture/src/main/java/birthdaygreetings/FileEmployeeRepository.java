@@ -9,10 +9,16 @@ import java.util.List;
 
 public class FileEmployeeRepository {
 
-    public List<Employee> listEmployees(String fileName) throws IOException, ParseException {
+    private String fileName;
+
+    public FileEmployeeRepository(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public List<Employee> listEmployees() throws IOException, ParseException {
         List<Employee> employeeList = new ArrayList<>();
         String str;
-        BufferedReader in = new BufferedReader(new FileReader(fileName));
+        BufferedReader in = new BufferedReader(new FileReader(this.fileName));
         in.readLine(); // skip header file
         while ((str = in.readLine()) != null) {
             String[] employeeData = parseEmployeeData(str);
