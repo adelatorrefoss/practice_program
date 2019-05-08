@@ -7,50 +7,26 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BirthdayService {
+
+    private FileEmployeeRepository employeeRepository;
 
     public void sendGreetings(String fileName, OurDate ourDate,
                               String smtpHost, int smtpPort) throws IOException, ParseException,
             AddressException, MessagingException {
 
-        List<Employee> employeeList = listEmployees(fileName);
+        employeeRepository = new FileEmployeeRepository();
+        List<Employee> employeeList = employeeRepository.listEmployees(fileName);
 
         for (Employee employee : employeeList) {
             if (employee.isBirthday(ourDate)) {
                 sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
             }
         }
-    }
-
-    private List<Employee> listEmployees(String fileName) throws IOException, ParseException {
-        List<Employee> employeeList = new ArrayList<>();
-        String str;
-        BufferedReader in = new BufferedReader(new FileReader(fileName));
-        in.readLine(); // skip header file
-        while ((str = in.readLine()) != null) {
-            String[] employeeData = parseEmployeeData(str);
-
-            Employee employee = createEmployeeFromData(employeeData);
-
-            employeeList.add(employee);
-        }
-        return employeeList;
-    }
-
-    private Employee createEmployeeFromData(String[] employeeData) throws ParseException {
-        return new Employee(employeeData[1], employeeData[0],
-                employeeData[2], employeeData[3]);
-    }
-
-    private String[] parseEmployeeData(String str) {
-        return str.split(", ");
     }
 
     private void sendHappyBirthdayEmail(String smtpHost, int smtpPort, Employee employee) throws MessagingException {
