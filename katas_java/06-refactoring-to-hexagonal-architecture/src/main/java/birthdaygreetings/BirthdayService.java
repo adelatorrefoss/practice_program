@@ -24,13 +24,16 @@ public class BirthdayService {
         String str = "";
         str = in.readLine(); // skip header
         List<Employee> employeeList = new ArrayList<>();
+
         while ((str = in.readLine()) != null) {
             String[] employeeData = parseEmployeeData(str);
 
             Employee employee = createEmployeeFromData(employeeData);
 
             employeeList.add(employee);
+        }
 
+        for (Employee employee: employeeList) {
             if (employee.isBirthday(ourDate)) {
                 sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
             }
