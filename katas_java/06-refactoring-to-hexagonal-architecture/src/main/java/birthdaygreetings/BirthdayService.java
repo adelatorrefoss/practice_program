@@ -1,12 +1,5 @@
 package birthdaygreetings;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -14,16 +7,22 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BirthdayService {
 
     public void sendGreetings(String fileName, OurDate ourDate,
-            String smtpHost, int smtpPort) throws IOException, ParseException,
+                              String smtpHost, int smtpPort) throws IOException, ParseException,
             AddressException, MessagingException {
 
         List<Employee> employeeList = listEmployees(fileName);
 
-        for (Employee employee: employeeList) {
+        for (Employee employee : employeeList) {
             if (employee.isBirthday(ourDate)) {
                 sendHappyBirthdayEmail(smtpHost, smtpPort, employee);
             }
@@ -47,7 +46,7 @@ public class BirthdayService {
 
     private Employee createEmployeeFromData(String[] employeeData) throws ParseException {
         return new Employee(employeeData[1], employeeData[0],
-                        employeeData[2], employeeData[3]);
+                employeeData[2], employeeData[3]);
     }
 
     private String[] parseEmployeeData(String str) {
@@ -65,7 +64,7 @@ public class BirthdayService {
     }
 
     private void sendMessage(String smtpHost, int smtpPort, String sender,
-            String subject, String body, String recipient)
+                             String subject, String body, String recipient)
             throws AddressException, MessagingException {
         // Create a mail session
         java.util.Properties props = new java.util.Properties();
