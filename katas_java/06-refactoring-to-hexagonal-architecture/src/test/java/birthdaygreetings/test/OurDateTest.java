@@ -48,6 +48,13 @@ public class OurDateTest {
     }
 
     private OurDate createDate(String date) throws ParseException {
-        return new OurDate(date);
+        return new OurDate(date, 0, 0, 0);
+    }
+
+    @Test
+    public void new_constructor() throws Exception {
+        OurDate ourDate = new OurDate(null, 1789, 01, 24);
+        assertEquals(1, ourDate.getMonth());
+        assertEquals(24, ourDate.getDay());
     }
 }

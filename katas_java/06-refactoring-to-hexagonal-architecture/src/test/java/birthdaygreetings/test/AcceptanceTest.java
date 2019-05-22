@@ -63,6 +63,6 @@ public class AcceptanceTest {
     }
 
     private OurDate createDate(String date) throws ParseException {
-        return new OurDate(date);
+        return new OurDate(date, 0, 0, 0);
     }
 }

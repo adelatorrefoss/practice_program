@@ -9,8 +9,13 @@ public class OurDate {
 
     private Date date;
 
-    public OurDate(String yyyyMMdd) throws ParseException {
-        date = new SimpleDateFormat("yyyy/MM/dd").parse(yyyyMMdd);
+    public OurDate(String yyyyMMdd, int year, int month, int day) throws ParseException {
+        if (yyyyMMdd == null) {
+            date = new SimpleDateFormat("yyyy/MM/dd").parse(""+year+"/"+month+"/"+day);
+        } else {
+            date = new SimpleDateFormat("yyyy/MM/dd").parse(yyyyMMdd);
+        }
+
     }
 
     public int getDay() {

@@ -13,7 +13,7 @@ public class Employee {
             String email) throws ParseException {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = new OurDate(birthDate);
+        this.birthDate = new OurDate(birthDate, 0, 0, 0);
         this.email = email;
     }
 
