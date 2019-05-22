@@ -69,5 +69,4 @@ public class BirthdayService {
     protected void sendMessage(Message msg) throws MessagingException {
         Transport.send(msg);
     }
-
 }
