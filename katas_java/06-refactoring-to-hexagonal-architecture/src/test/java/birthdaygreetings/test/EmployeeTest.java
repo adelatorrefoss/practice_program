@@ -7,15 +7,19 @@ import birthdaygreetings.OurDate;
 
 import org.junit.Test;
 
+import java.text.ParseException;
+
 public class EmployeeTest {
 
     @Test
     public void testBirthday() throws Exception {
         Employee employee = new Employee("foo", "bar", "1990/01/31", "a@b.c");
+        String date = "2008/01/30";
         assertFalse("not his birthday",
-                employee.isBirthday(new OurDate("2008/01/30")));
+                employee.isBirthday(createDate(date)));
+        String date2 = "2008/01/31";
         assertTrue("his birthday",
-                employee.isBirthday(new OurDate("2008/01/31")));
+                employee.isBirthday(createDate(date2)));
     }
 
     @Test
@@ -31,5 +35,9 @@ public class EmployeeTest {
         assertFalse(base.equals(""));
         assertTrue(base.equals(same));
         assertFalse(base.equals(different));
+    }
+
+    private OurDate createDate(String date) throws ParseException {
+        return new OurDate(date);
     }
 }
