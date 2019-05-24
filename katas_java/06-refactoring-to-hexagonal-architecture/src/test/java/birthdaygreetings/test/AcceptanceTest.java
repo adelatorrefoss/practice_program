@@ -1,22 +1,17 @@
 package birthdaygreetings.test;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-
 import birthdaygreetings.BirthdayService;
 import birthdaygreetings.EmployeeRepository;
 import birthdaygreetings.FileEmployeeRepository;
-import birthdaygreetings.OurDate;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class AcceptanceTest {
 
