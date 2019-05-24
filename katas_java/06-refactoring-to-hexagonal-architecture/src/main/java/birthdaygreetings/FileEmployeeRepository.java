@@ -46,8 +46,10 @@ public class FileEmployeeRepository implements EmployeeRepository {
     }
 
     private Employee createEmployeeFromData(String[] employeeData) throws ParseException {
+
+
         return new Employee(employeeData[1], employeeData[0],
-                employeeData[2], employeeData[3]);
+                employeeData[2], employeeData[3], null);
     }
 
     private String[] parseEmployeeData(String str) {

@@ -11,7 +11,7 @@ public class Employee {
     private String email;
 
     public Employee(String firstName, String lastName, String birthDate,
-            String email) throws ParseException {
+                    String email, Date newBirthDate) throws ParseException {
         this.firstName = firstName;
         this.lastName = lastName;
         String date = birthDate;
