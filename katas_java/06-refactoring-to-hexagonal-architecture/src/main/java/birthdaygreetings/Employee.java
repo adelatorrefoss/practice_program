@@ -14,10 +14,10 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         String date = birthDate;
-        String[] dateSplitted = date.split("/");
 
         this.birthDate = new OurDate(newBirthDate);
         if (newBirthDate == null) {
+            String[] dateSplitted = date.split("/");
             this.birthDate = new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2])));
         }
 

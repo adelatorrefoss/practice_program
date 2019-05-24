@@ -50,9 +50,8 @@ public class FileEmployeeRepository implements EmployeeRepository {
         String[] dateSplitted = employeeData[2].split("/");
         Date birthDate = new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2]));
 
-
         return new Employee(employeeData[1], employeeData[0],
-                employeeData[2], employeeData[3], birthDate);
+                null, employeeData[3], birthDate);
     }
 
     private String[] parseEmployeeData(String str) {
