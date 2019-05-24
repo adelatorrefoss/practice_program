@@ -13,14 +13,7 @@ public class Employee {
                     String email, Date newBirthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
-        String date = birthDate;
-
         this.birthDate = new OurDate(newBirthDate);
-        if (newBirthDate == null) {
-            String[] dateSplitted = date.split("/");
-            this.birthDate = new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2])));
-        }
-
         this.email = email;
     }
 
