@@ -18,7 +18,7 @@ public class EmployeeTest {
         String[] dateSplitted = birthDate.split("/");
         Date newBirthDate = new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2]));
 
-        Employee employee = new Employee("foo", "bar", birthDate, "a@b.c", newBirthDate);
+        Employee employee = new Employee("foo", "bar", "a@b.c", newBirthDate);
         String date = "2008/01/30";
         assertFalse("not his birthday",
                 employee.isBirthday(createDate(date)));
@@ -33,11 +33,11 @@ public class EmployeeTest {
         String[] dateSplitted = birthDate.split("/");
         Date newBirthDate = new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2]));
 
-        Employee base = new Employee("First", "Last", birthDate,
+        Employee base = new Employee("First", "Last",
                 "first@last.com", newBirthDate);
-        Employee same = new Employee("First", "Last", birthDate,
+        Employee same = new Employee("First", "Last",
                 "first@last.com", newBirthDate);
-        Employee different = new Employee("First", "Last", birthDate,
+        Employee different = new Employee("First", "Last",
                 "boom@boom.com", newBirthDate);
 
         assertFalse(base.equals(null));

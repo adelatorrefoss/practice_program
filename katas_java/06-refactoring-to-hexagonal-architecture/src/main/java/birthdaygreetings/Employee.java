@@ -9,8 +9,7 @@ public class Employee {
     private String firstName;
     private String email;
 
-    public Employee(String firstName, String lastName, String birthDate,
-                    String email, Date newBirthDate) {
+    public Employee(String firstName, String lastName, String email, Date newBirthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = new OurDate(newBirthDate);
