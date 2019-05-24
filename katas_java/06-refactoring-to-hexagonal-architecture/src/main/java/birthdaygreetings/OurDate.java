@@ -7,10 +7,6 @@ public class OurDate {
 
     private Date date;
 
-    public OurDate(int year, int month, int day) {
-        date = new Date(year, month - 1, day);
-    }
-
     public OurDate(Date date) {
         this.date = date;
     }
