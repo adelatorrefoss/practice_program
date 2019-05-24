@@ -2,6 +2,7 @@ package birthdaygreetings.test;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.Message;
@@ -64,6 +65,6 @@ public class AcceptanceTest {
 
     private OurDate createDate(String date) throws ParseException {
         String[] dateSplitted = date.split("/");
-        return new OurDate(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]), Integer.parseInt(dateSplitted[2]));
+        return new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2])));
     }
 }

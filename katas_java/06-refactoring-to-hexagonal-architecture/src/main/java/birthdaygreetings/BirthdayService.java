@@ -8,6 +8,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class BirthdayService {
@@ -69,7 +70,7 @@ public class BirthdayService {
         BirthdayService service = new BirthdayService(new FileEmployeeRepository("employee_data.txt"));
         try {
             service.sendGreetings(
-                    new OurDate(2008, 10, 8), "localhost", 25);
+                    new OurDate(new Date(2008, 10, 8)), "localhost", 25);
         } catch (Exception e) {
             e.printStackTrace();
         }
