@@ -70,7 +70,7 @@ public class BirthdayService {
         try {
             String date = "2008/10/08";
             service.sendGreetings(
-                    new OurDate(date, 0, 0, 0), "localhost", 25);
+                    new OurDate(null, 2008, 10, 8), "localhost", 25);
         } catch (Exception e) {
             e.printStackTrace();
         }

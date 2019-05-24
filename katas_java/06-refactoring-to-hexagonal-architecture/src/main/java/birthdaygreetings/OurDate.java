@@ -11,7 +11,7 @@ public class OurDate {
 
     public OurDate(String yyyyMMdd, int year, int month, int day) throws ParseException {
         if (yyyyMMdd == null) {
-            date = new SimpleDateFormat("yyyy/MM/dd").parse(""+year+"/"+month+"/"+day);
+            date = new SimpleDateFormat("yyyy/MM/dd").parse(year+"/"+month+"/"+day);
         } else {
             date = new SimpleDateFormat("yyyy/MM/dd").parse(yyyyMMdd);
         }

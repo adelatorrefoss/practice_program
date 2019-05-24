@@ -38,6 +38,7 @@ public class EmployeeTest {
     }
 
     private OurDate createDate(String date) throws ParseException {
-        return new OurDate(date, 0, 0, 0);
+        String[] dateSplitted = date.split("/");
+        return new OurDate(null, Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]), Integer.parseInt(dateSplitted[2]));
     }
 }

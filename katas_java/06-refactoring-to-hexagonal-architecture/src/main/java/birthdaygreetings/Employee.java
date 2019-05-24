@@ -13,7 +13,9 @@ public class Employee {
             String email) throws ParseException {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = new OurDate(birthDate, 0, 0, 0);
+        String date = birthDate;
+        String[] dateSplitted = date.split("/");
+        this.birthDate = new OurDate(null, Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]), Integer.parseInt(dateSplitted[2]));
         this.email = email;
     }
 
