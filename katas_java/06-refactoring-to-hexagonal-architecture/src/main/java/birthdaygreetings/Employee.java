@@ -15,7 +15,7 @@ public class Employee {
         this.lastName = lastName;
         String date = birthDate;
         String[] dateSplitted = date.split("/");
-        this.birthDate = new OurDate(null, Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]), Integer.parseInt(dateSplitted[2]));
+        this.birthDate = new OurDate(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]), Integer.parseInt(dateSplitted[2]));
         this.email = email;
     }
 
