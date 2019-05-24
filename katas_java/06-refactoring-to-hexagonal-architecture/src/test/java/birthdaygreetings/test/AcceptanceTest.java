@@ -43,7 +43,7 @@ public class AcceptanceTest {
 
         String date = "2008/10/08";
         service.sendGreetings(
-                createDate(date), "localhost", SMTP_PORT);
+                DateHelper.createOurDate(date), "localhost", SMTP_PORT);
 
         assertEquals("message not sent?", 1, messagesSent.size());
         Message message = messagesSent.get(0);
@@ -58,13 +58,8 @@ public class AcceptanceTest {
     public void willNotSendEmailsWhenNobodysBirthday() throws Exception {
         String date = "2008/01/01";
         service.sendGreetings(
-                createDate(date), "localhost", SMTP_PORT);
+                DateHelper.createOurDate(date), "localhost", SMTP_PORT);
 
         assertEquals("what? messages?", 0, messagesSent.size());
-    }
-
-    private OurDate createDate(String date) throws ParseException {
-        String[] dateSplitted = date.split("/");
-        return new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2])));
     }
 }

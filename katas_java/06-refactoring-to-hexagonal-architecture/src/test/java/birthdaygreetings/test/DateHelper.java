@@ -11,5 +11,8 @@ public class DateHelper {
         return new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2])));
     }
 
-
+    public static Date createDate(String date) throws ParseException {
+        String[] dateSplitted = date.split("/");
+        return new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2]));
+    }
 }
