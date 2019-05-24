@@ -8,12 +8,17 @@ import birthdaygreetings.OurDate;
 import org.junit.Test;
 
 import java.text.ParseException;
+import java.util.Date;
 
 public class EmployeeTest {
 
     @Test
     public void testBirthday() throws Exception {
-        Employee employee = new Employee("foo", "bar", "1990/01/31", "a@b.c", null);
+        String birthDate = "1990/01/31";
+        String[] dateSplitted = birthDate.split("/");
+        Date newBirthDate = new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2]));
+
+        Employee employee = new Employee("foo", "bar", birthDate, "a@b.c", newBirthDate);
         String date = "2008/01/30";
         assertFalse("not his birthday",
                 employee.isBirthday(createDate(date)));
@@ -24,12 +29,16 @@ public class EmployeeTest {
 
     @Test
     public void equality() throws Exception {
-        Employee base = new Employee("First", "Last", "1999/09/01",
-                "first@last.com", null);
-        Employee same = new Employee("First", "Last", "1999/09/01",
-                "first@last.com", null);
-        Employee different = new Employee("First", "Last", "1999/09/01",
-                "boom@boom.com", null);
+        String birthDate = "1999/09/01";
+        String[] dateSplitted = birthDate.split("/");
+        Date newBirthDate = new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2]));
+
+        Employee base = new Employee("First", "Last", birthDate,
+                "first@last.com", newBirthDate);
+        Employee same = new Employee("First", "Last", birthDate,
+                "first@last.com", newBirthDate);
+        Employee different = new Employee("First", "Last", birthDate,
+                "boom@boom.com", newBirthDate);
 
         assertFalse(base.equals(null));
         assertFalse(base.equals(""));
