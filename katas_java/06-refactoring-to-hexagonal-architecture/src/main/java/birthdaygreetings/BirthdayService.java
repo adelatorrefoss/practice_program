@@ -68,7 +68,6 @@ public class BirthdayService {
     public static void main(String[] args) {
         BirthdayService service = new BirthdayService(new FileEmployeeRepository("employee_data.txt"));
         try {
-            String date = "2008/10/08";
             service.sendGreetings(
                     new OurDate(2008, 10, 8), "localhost", 25);
         } catch (Exception e) {
