@@ -12,6 +12,9 @@ public class OurDate {
     public OurDate(int year, int month, int day) throws ParseException {
         date = new Date(year, month-1, day);
     }
+    public OurDate(Date date) {
+        this.date = date;
+    }
 
     public int getDay() {
         return getPartOfDate(GregorianCalendar.DAY_OF_MONTH);
