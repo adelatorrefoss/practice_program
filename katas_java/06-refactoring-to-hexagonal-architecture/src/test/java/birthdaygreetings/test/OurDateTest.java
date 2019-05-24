@@ -6,14 +6,13 @@ import birthdaygreetings.OurDate;
 
 import org.junit.Test;
 
-import java.text.ParseException;
 import java.util.Date;
 
 public class OurDateTest {
     @Test
     public void getters() throws Exception {
         String date = "1789/01/24";
-        OurDate ourDate = createDate(date);
+        OurDate ourDate = DateHelper.createOurDate(date);
         assertEquals(1, ourDate.getMonth());
         assertEquals(24, ourDate.getDay());
     }
@@ -21,13 +20,13 @@ public class OurDateTest {
     @Test
     public void isSameDate() throws Exception {
         String date = "1789/01/24";
-        OurDate ourDate = createDate(date);
+        OurDate ourDate = DateHelper.createOurDate(date);
         String date2 = "2001/01/24";
-        OurDate sameDay = createDate(date2);
+        OurDate sameDay = DateHelper.createOurDate(date2);
         String date3 = "1789/01/25";
-        OurDate notSameDay = createDate(date3);
+        OurDate notSameDay = DateHelper.createOurDate(date3);
         String date4 = "1789/02/25";
-        OurDate notSameMonth = createDate(date4);
+        OurDate notSameMonth = DateHelper.createOurDate(date4);
 
         assertTrue("same", ourDate.isSameDay(sameDay));
         assertFalse("not same day", ourDate.isSameDay(notSameDay));
@@ -37,20 +36,15 @@ public class OurDateTest {
     @Test
     public void equality() throws Exception {
         String date = "2000/01/02";
-        OurDate base = createDate(date);
-        OurDate same = createDate(date);
-        OurDate different = createDate("2000/01/04");
+        OurDate base = DateHelper.createOurDate(date);
+        OurDate same = DateHelper.createOurDate(date);
+        OurDate different = DateHelper.createOurDate("2000/01/04");
 
         assertFalse(base.equals(null));
         assertFalse(base.equals(""));
         assertTrue(base.equals(base));
         assertTrue(base.equals(same));
         assertFalse(base.equals(different));
-    }
-
-    private OurDate createDate(String date) throws ParseException {
-        String[] dateSplitted = date.split("/");
-        return new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2])));
     }
 
     @Test
