@@ -1,6 +1,5 @@
 package birthdaygreetings;
 
-import java.text.ParseException;
 import java.util.Date;
 
 public class Employee {
@@ -11,7 +10,7 @@ public class Employee {
     private String email;
 
     public Employee(String firstName, String lastName, String birthDate,
-                    String email, Date newBirthDate) throws ParseException {
+                    String email, Date newBirthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         String date = birthDate;
@@ -19,7 +18,7 @@ public class Employee {
 
         this.birthDate = new OurDate(newBirthDate);
         if (newBirthDate == null) {
-            this.birthDate = new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2])));
+            this.birthDate = new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2])));
         }
 
         this.email = email;
