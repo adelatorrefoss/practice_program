@@ -10,7 +10,7 @@ public class OurDate {
     private Date date;
 
     public OurDate(int year, int month, int day) throws ParseException {
-        date = new SimpleDateFormat("yyyy/MM/dd").parse(year + "/" + month + "/" + day);
+        date = new Date(year, month-1, day);
     }
 
     public int getDay() {
