@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,8 +48,7 @@ public class FileEmployeeRepository implements EmployeeRepository {
     }
 
     private Employee createEmployeeFromData(String[] employeeData) throws ParseException {
-        String[] dateSplitted = employeeData[2].split("/");
-        Date birthDate = new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1]) - 1, Integer.parseInt(dateSplitted[2]));
+        Date birthDate = new SimpleDateFormat("yyyy/MM/dd").parse(employeeData[2]);
 
         return new Employee(employeeData[1], employeeData[0],
                 employeeData[3], birthDate);
