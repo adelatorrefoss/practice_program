@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class DateHelper {
     public static OurDate createOurDate(String date) throws ParseException {
-        return new OurDate(new SimpleDateFormat("yyyy/MM/dd").parse(date));
+        return new OurDate(createDate(date));
     }
 
     public static Date createDate(String date) throws ParseException {
