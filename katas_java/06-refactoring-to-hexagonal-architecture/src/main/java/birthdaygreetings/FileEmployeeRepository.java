@@ -31,7 +31,7 @@ public class FileEmployeeRepository implements EmployeeRepository {
         return employeeList;
     }
 
-    public List<Employee> listBirthdayEmployee(OurDate currentDate)  throws IOException, ParseException {
+    public List<Employee> listBirthdayEmployee(OurDate currentDate) throws IOException, ParseException {
         List<Employee> employeeList = new ArrayList<>();
         String str;
         BufferedReader in = new BufferedReader(new FileReader(this.fileName));
