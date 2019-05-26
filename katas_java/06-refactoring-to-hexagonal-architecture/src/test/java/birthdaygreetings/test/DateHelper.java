@@ -3,16 +3,15 @@ package birthdaygreetings.test;
 import birthdaygreetings.OurDate;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateHelper {
     public static OurDate createOurDate(String date) throws ParseException {
-        String[] dateSplitted = date.split("/");
-        return new OurDate(new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2])));
+        return new OurDate(new SimpleDateFormat("yyyy/MM/dd").parse(date));
     }
 
     public static Date createDate(String date) throws ParseException {
-        String[] dateSplitted = date.split("/");
-        return new Date(Integer.parseInt(dateSplitted[0]), Integer.parseInt(dateSplitted[1])-1, Integer.parseInt(dateSplitted[2]));
+        return new SimpleDateFormat("yyyy/MM/dd").parse(date);
     }
 }
