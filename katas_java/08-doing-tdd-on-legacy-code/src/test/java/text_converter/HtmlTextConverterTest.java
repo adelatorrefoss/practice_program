@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -63,29 +62,29 @@ public class HtmlTextConverterTest {
     //  new funct
 
     private class HtmlTextConverterTestDouble extends HtmlTextConverter {
-        public String output = "";
+        String output = "";
         private boolean empty = false;
         private String input = "";
 
-        public HtmlTextConverterTestDouble(String fullFilenameWithPath) {
+        HtmlTextConverterTestDouble(String fullFilenameWithPath) {
             super(fullFilenameWithPath);
         }
 
-        public void setInput(String input) {
+        void setInput(String input) {
             this.input = input;
         }
 
         @Override
-        protected void closeWriter(BufferedWriter writer) throws IOException {
+        protected void closeWriter(BufferedWriter writer) {
         }
 
         @Override
-        protected void writeLine(BufferedWriter writer, String s) throws IOException {
+        protected void writeLine(BufferedWriter writer, String s) {
             output += s;
         }
 
         @Override
-        protected String readLine(BufferedReader reader) throws IOException {
+        protected String readLine(BufferedReader reader) {
             if (this.empty) {
                 return null;
             }
@@ -94,12 +93,12 @@ public class HtmlTextConverterTest {
         }
 
         @Override
-        protected BufferedReader createReader() throws FileNotFoundException {
+        protected BufferedReader createReader() {
             return null;
         }
 
         @Override
-        protected BufferedWriter createWriter(String htmlFile) throws IOException {
+        protected BufferedWriter createWriter(String htmlFile) {
             return null;
         }
     }
