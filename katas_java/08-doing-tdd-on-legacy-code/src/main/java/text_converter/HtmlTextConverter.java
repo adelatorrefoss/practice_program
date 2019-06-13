@@ -19,10 +19,7 @@ public class HtmlTextConverter
 		writer.write("<body>");
 	    while (line != null)
 	    {
-			String output = line;
-			output = output.replace("&", "&amp;");
-			output = output.replace("<", "&lt;");
-			output = output.replace(">", "&gt;");
+			String output = replaceSpecialChars(line);
 			writer.write(output);
 			writer.write("<br />");
 	        line = reader.readLine();
@@ -30,6 +27,14 @@ public class HtmlTextConverter
 		writer.write("</body>");
 		writer.close();
     }
+
+	public String replaceSpecialChars(String line) {
+		String output = line;
+		output = output.replace("&", "&amp;");
+		output = output.replace("<", "&lt;");
+		output = output.replace(">", "&gt;");
+		return output;
+	}
 
 	public String getFilename() {
 		return this.fileName;
