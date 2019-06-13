@@ -10,20 +10,10 @@ public class HtmlTextConverterTest {
     @Test
     public void replace_ampersand_in_line_with_one_character() {
         HtmlTextConverter converter = new HtmlTextConverter("");
-        String line = "&";
+        String line = "<first>&and</last>";
         String result = converter.replaceSpecialChars(line);
 
-        String expected = "&amp;";
+        String expected = "&lt;first&gt;&amp;and&lt;/last&gt;";
         assertThat(expected, equalTo(result));
     }
-
-    /**
-     todo
-      - unique test with all actual replacements
-      - ampersand with more characters
-      - first
-      - last
-      - <
-      - >
-    */
 }
