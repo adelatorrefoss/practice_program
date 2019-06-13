@@ -1,5 +1,6 @@
 package text_converter;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -44,6 +45,18 @@ public class HtmlTextConverterTest {
         String result = converter.output;
         assertThat(result, equalTo("<body>&quot;<br /></body>"));
     }
+
+    @Test
+    public void replace_ampersand_gt_lt_single_and_double_quotes() throws IOException {
+        HtmlTextConverterTestDouble converter = new HtmlTextConverterTestDouble("");
+        converter.setInput("<first>&and\"double\"'single'</last>");
+
+        converter.convertToHtml("");
+
+        String expected = "<body>&lt;first&gt;&amp;and&quot;double&quot;&quot;single&quot;&lt;/last&gt;<br /></body>";
+        MatcherAssert.assertThat(converter.output, equalTo(expected));
+    }
+
 
     //  convert_lt
     //  convert_gt
