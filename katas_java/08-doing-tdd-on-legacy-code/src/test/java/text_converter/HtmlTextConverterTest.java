@@ -22,6 +22,17 @@ public class HtmlTextConverterTest {
         assertThat(result, equalTo("<body>&amp;<br /></body>"));
     }
 
+    @Test
+    public void convert_single_quote() throws IOException {
+        FakeHtmlTextConverter converter = new FakeHtmlTextConverter("");
+        converter.setInput("'");
+
+        converter.convertToHtml("");
+
+        String result = converter.output;
+        assertThat(result, equalTo("<body>&quot;<br /></body>"));
+    }
+
     //  convert_lt
     //  convert_gt
     //  new funct
@@ -29,10 +40,15 @@ public class HtmlTextConverterTest {
     private class FakeHtmlTextConverter extends HtmlTextConverter {
         public String output = "";
         private boolean empty;
+        private String input = "&";
 
         public FakeHtmlTextConverter(String fullFilenameWithPath) {
             super(fullFilenameWithPath);
             this.empty = false;
+        }
+
+        public void setInput(String input) {
+            this.input = input;
         }
 
         @Override
@@ -50,7 +66,7 @@ public class HtmlTextConverterTest {
                 return null;
             }
             this.empty = true;
-            return "&";
+            return this.input;
         }
 
         @Override

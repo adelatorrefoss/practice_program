@@ -23,6 +23,7 @@ public class HtmlTextConverter
 			output = output.replace("&", "&amp;");
 			output = output.replace("<", "&lt;");
 			output = output.replace(">", "&gt;");
+			output = output.replace("'", "&quot;");
 			writeLine(writer, output);
 			writeLine(writer, "<br />");
 			line = readLine(reader);
