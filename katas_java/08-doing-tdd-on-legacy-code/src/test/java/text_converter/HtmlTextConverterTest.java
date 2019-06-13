@@ -15,6 +15,7 @@ public class HtmlTextConverterTest {
     @Test
     public void convert_ampersand() throws IOException {
         FakeHtmlTextConverter converter = new FakeHtmlTextConverter("");
+        converter.setInput("&");
 
         converter.convertToHtml("");
 
@@ -40,7 +41,7 @@ public class HtmlTextConverterTest {
     private class FakeHtmlTextConverter extends HtmlTextConverter {
         public String output = "";
         private boolean empty;
-        private String input = "&";
+        private String input;
 
         public FakeHtmlTextConverter(String fullFilenameWithPath) {
             super(fullFilenameWithPath);
