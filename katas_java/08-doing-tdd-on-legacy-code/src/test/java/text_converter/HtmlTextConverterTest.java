@@ -34,6 +34,17 @@ public class HtmlTextConverterTest {
         assertThat(result, equalTo("<body>&quot;<br /></body>"));
     }
 
+    @Test
+    public void convert_double_quote() throws IOException {
+        HtmlTextConverterTestDouble converter = new HtmlTextConverterTestDouble("");
+        converter.setInput("\"");
+
+        converter.convertToHtml("");
+
+        String result = converter.output;
+        assertThat(result, equalTo("<body>&quot;<br /></body>"));
+    }
+
     //  convert_lt
     //  convert_gt
     //  new funct
