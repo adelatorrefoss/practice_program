@@ -17,4 +17,13 @@ public class HtmlTextConverterTest {
         assertThat(expected, equalTo(result));
     }
 
+    /**
+     todo
+      - unique test with all actual replacements
+      - ampersand with more characters
+      - first
+      - last
+      - <
+      - >
+    */
 }
