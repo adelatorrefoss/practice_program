@@ -7,7 +7,7 @@ import java.util.List;
 public class MarsRover {
 
     private static final int DISPLACEMENT = 1;
-    private final NasaCommunicationProtocol communicationProtocol;
+    private final CommunicationProtocol communicationProtocol;
     private Vector vector;
 
     public MarsRover(int x, int y, String direction) {

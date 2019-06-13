@@ -5,8 +5,9 @@ import mars_rover.command_types.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class NasaCommunicationProtocol {
-    List<Command> createCommands(String message, int displacement) {
+class NasaCommunicationProtocol implements CommunicationProtocol {
+    @Override
+    public List<Command> createCommands(String message, int displacement) {
         List<Command> commands = new ArrayList<>();
         for (String commandRepresentation : parseMessage(message)) {
             commands.add(createCommand(commandRepresentation, displacement));
