@@ -14,7 +14,7 @@ public class HtmlTextConverterTest {
 
     @Test
     public void convert_ampersand() throws IOException {
-        FakeHtmlTextConverter converter = new FakeHtmlTextConverter("");
+        HtmlTextConverterTestDouble converter = new HtmlTextConverterTestDouble("");
         converter.setInput("&");
 
         converter.convertToHtml("");
@@ -25,7 +25,7 @@ public class HtmlTextConverterTest {
 
     @Test
     public void convert_single_quote() throws IOException {
-        FakeHtmlTextConverter converter = new FakeHtmlTextConverter("");
+        HtmlTextConverterTestDouble converter = new HtmlTextConverterTestDouble("");
         converter.setInput("'");
 
         converter.convertToHtml("");
@@ -38,14 +38,13 @@ public class HtmlTextConverterTest {
     //  convert_gt
     //  new funct
 
-    private class FakeHtmlTextConverter extends HtmlTextConverter {
+    private class HtmlTextConverterTestDouble extends HtmlTextConverter {
         public String output = "";
-        private boolean empty;
-        private String input;
+        private boolean empty = false;
+        private String input = "";
 
-        public FakeHtmlTextConverter(String fullFilenameWithPath) {
+        public HtmlTextConverterTestDouble(String fullFilenameWithPath) {
             super(fullFilenameWithPath);
-            this.empty = false;
         }
 
         public void setInput(String input) {
