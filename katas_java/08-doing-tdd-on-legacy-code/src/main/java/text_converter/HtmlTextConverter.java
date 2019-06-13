@@ -12,24 +12,44 @@ public class HtmlTextConverter
     }
 
     public void convertToHtml(String htmlFile) throws IOException{
-		BufferedWriter writer = new BufferedWriter(new FileWriter(htmlFile));
-	    BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		BufferedWriter writer = createWriter(htmlFile);
+	    BufferedReader reader = createReader();
 	    
-	    String line = reader.readLine();
-		writer.write("<body>");
-	    while (line != null)
+	    String line = readLine(reader);
+		writeLine(writer, "<body>");
+		while (line != null)
 	    {
 			String output = line;
 			output = output.replace("&", "&amp;");
 			output = output.replace("<", "&lt;");
 			output = output.replace(">", "&gt;");
-			writer.write(output);
-			writer.write("<br />");
-	        line = reader.readLine();
+			writeLine(writer, output);
+			writeLine(writer, "<br />");
+			line = readLine(reader);
 	    }
-		writer.write("</body>");
+		writeLine(writer, "</body>");
+		closeWriter(writer);
+	}
+
+	protected void closeWriter(BufferedWriter writer) throws IOException {
 		writer.close();
-    }
+	}
+
+	protected void writeLine(BufferedWriter writer, String s) throws IOException {
+		writer.write(s);
+	}
+
+	protected String readLine(BufferedReader reader) throws IOException {
+		return reader.readLine();
+	}
+
+	protected BufferedReader createReader() throws FileNotFoundException {
+		return new BufferedReader(new FileReader(fileName));
+	}
+
+	protected BufferedWriter createWriter(String htmlFile) throws IOException {
+		return new BufferedWriter(new FileWriter(htmlFile));
+	}
 
 	public String getFilename() {
 		return this.fileName;
