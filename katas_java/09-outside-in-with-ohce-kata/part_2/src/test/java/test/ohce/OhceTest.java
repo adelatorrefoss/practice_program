@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 public class OhceTest {
 
     @Test
-    public void greetingInTheMorning() {
+    public void greeting_in_the_morning() {
 
         Clock clock = mock(Clock.class);
         when(clock.getCurrentHour()).thenReturn(7);
@@ -25,8 +25,7 @@ public class OhceTest {
     }
 
     @Test
-    public void reverseMessage() {
-
+    public void reverse_message() {
         Clock clock = mock(Clock.class);
         Console console = mock(Console.class);
         when(console.nextInput()).thenReturn("hola");
