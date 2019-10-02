@@ -11,24 +11,23 @@ public class OhceTest {
 
     @Test
     public void greeting_in_the_morning() {
-
         Clock clock = mock(Clock.class);
         when(clock.getCurrentHour()).thenReturn(7);
         Console console = mock(Console.class);
+        when(console.nextInput()).thenReturn("Stop!");
         Ohce ohce = new Ohce(clock, console);
 
         ohce.run("Pedro");
 
         verify(console).write("¡Buenas días Pedro!");
-
-        //TODO: Stop!
+        verify(console).write("Adios Pedro");
     }
 
     @Test
     public void reverse_message() {
         Clock clock = mock(Clock.class);
         Console console = mock(Console.class);
-        when(console.nextInput()).thenReturn("hola");
+        when(console.nextInput()).thenReturn("hola", "Stop!");
         Ohce ohce = new Ohce(clock, console);
 
         ohce.run("Pedro");

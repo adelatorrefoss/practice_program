@@ -16,5 +16,8 @@ public class Ohce {
         if (input != null) {
             console.write(new StringBuilder(input).reverse().toString());
         }
+        if (input.equals("Stop!")) {
+            console.write("Adios " + name);
+        }
     }
 }
