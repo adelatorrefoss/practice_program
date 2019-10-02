@@ -14,12 +14,7 @@ public class Ohce {
         console.write("¡Buenos días " + name + "!");
         String input = console.nextInput();
 
-        while(input != null) {
-            if (input.equals("Stop!")) {
-                console.write("Adios " + name);
-                return;
-            }
-
+        while(!input.equals("Stop!")) {
             String reversedInput = new StringBuilder(input).reverse().toString();
             console.write(reversedInput);
 
@@ -28,5 +23,7 @@ public class Ohce {
             }
             input = console.nextInput();
         }
+
+        console.write("Adios " + name);
     }
 }
