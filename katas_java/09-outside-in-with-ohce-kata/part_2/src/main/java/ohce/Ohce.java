@@ -12,8 +12,9 @@ public class Ohce {
 
     public void run(String name) {
         console.write("¡Buenas días " + name + "!");
-
-//    String input = console.nextInput();
-//    console.write(new StringBuilder(input).reverse().toString());
+        String input = console.nextInput();
+        if (input != null) {
+            console.write(new StringBuilder(input).reverse().toString());
+        }
     }
 }

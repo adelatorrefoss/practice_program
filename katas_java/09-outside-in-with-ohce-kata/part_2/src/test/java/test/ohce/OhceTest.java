@@ -34,6 +34,6 @@ public class OhceTest {
 
         ohce.run("Pedro");
 
-        verify(console).write("olah");
+        verify(console).write("aloh");
     }
 }
