@@ -13,13 +13,20 @@ public class Ohce {
     public void run(String name) {
         console.write("¡Buenos días " + name + "!");
         String input = console.nextInput();
-        if (input != null) {
+
+        while(input != null) {
+            if (input.equals("Stop!")) {
+                console.write("Adios " + name);
+                return;
+            }
+
             String reversedInput = new StringBuilder(input).reverse().toString();
             console.write(reversedInput);
 
             if (input.equals(reversedInput)) {
                 console.write("¡Bonita palabra!");
             }
+            input = console.nextInput();
         }
     }
 }
