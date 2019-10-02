@@ -11,13 +11,15 @@ public class Ohce {
     }
 
     public void run(String name) {
-        console.write("¡Buenas días " + name + "!");
+        console.write("¡Buenos días " + name + "!");
         String input = console.nextInput();
         if (input != null) {
-            console.write(new StringBuilder(input).reverse().toString());
-        }
-        if (input.equals("Stop!")) {
-            console.write("Adios " + name);
+            String reversedInput = new StringBuilder(input).reverse().toString();
+            console.write(reversedInput);
+
+            if (input.equals(reversedInput)) {
+                console.write("¡Bonita palabra!");
+            }
         }
     }
 }

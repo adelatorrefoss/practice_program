@@ -21,7 +21,7 @@ public class OhceAcceptanceTest {
         Ohce ohce = new Ohce(clock, console);
         ohce.run("Pedro");
 
-        verify(console).write("¡Buenas días Pedro!");
+        verify(console).write("¡Buenos días Pedro!");
         verify(console).write("aloh");
         verify(console).write("oto");
         verify(console).write("¡Bonita palabra!");
