@@ -4,5 +4,5 @@ import java.time.LocalDate;
 
 public interface Calendar {
 
-    LocalDate now();
+  LocalDate now();
 }

@@ -1,13 +1,16 @@
 package bank.tests.acceptance;
 
-import bank.Account;
-import bank.Calendar;
-import bank.Display;
 import org.junit.Test;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 
-import static org.mockito.Mockito.*;
+import bank.Account;
+import bank.Display;
+import bank.Calendar;
 
 public class PrintingAccountStatementOnConsoleTest {
     @Test
@@ -17,9 +20,9 @@ public class PrintingAccountStatementOnConsoleTest {
         Account account = new Account(calendar, display);
 
         when(calendar.now()).thenReturn(
-                LocalDate.of(2012, 1, 10),
-                LocalDate.of(2012, 1, 13),
-                LocalDate.of(2012, 1, 14)
+            LocalDate.of(2012, 1, 10),
+            LocalDate.of(2012, 1, 13),
+            LocalDate.of(2012, 1, 14)
         );
 
         account.deposit(1000);
