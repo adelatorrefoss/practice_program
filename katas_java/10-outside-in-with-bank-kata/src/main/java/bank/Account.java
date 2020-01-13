@@ -22,5 +22,6 @@ public class Account {
     }
 
     public void withdraw(int amount) {
+        deposit(-amount);
     }
 }
