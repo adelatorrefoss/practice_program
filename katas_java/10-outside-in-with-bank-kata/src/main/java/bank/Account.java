@@ -1,10 +1,10 @@
 package bank;
 
-public class Bank {
+public class Account {
     private final Calendar calendar;
     private final Printer printer;
 
-    public Bank(Calendar calendar, Printer printer) {
+    public Account(Calendar calendar, Printer printer) {
         this.calendar = calendar;
         this.printer = printer;
     }
