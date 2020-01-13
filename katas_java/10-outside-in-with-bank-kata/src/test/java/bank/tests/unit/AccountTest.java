@@ -17,12 +17,13 @@ public class AccountTest {
         Printer printer = mock(Printer.class);
         Calendar calendar = mock(Calendar.class);
         when(calendar.today()).thenReturn(today);
-        Account account = new Account(calendar, printer);
+        TransactionRepository transactionRepository = mock(TransactionRepository.class);
+
+        Account account = new Account(calendar, printer, transactionRepository);
         account.deposit(1000);
 
         Transaction transaction = new Transaction(today, 1000);
 
-        TransactionRepository transactionRepository = mock(TransactionRepository.class);
         verify(transactionRepository).save(transaction);
     }
 }
