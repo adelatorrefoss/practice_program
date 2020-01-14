@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.Objects;
 
 public class StatementLine {
-    private final Date operationDate;
-    private final int amount;
-    private final int balance;
+    public final Date operationDate;
+    public final int amount;
+    public final int balance;
 
     public StatementLine(Date operationDate, int amount, int balance) {
         this.operationDate = operationDate;
