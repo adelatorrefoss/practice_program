@@ -23,6 +23,7 @@ public class PrintingAccountStatementOnConsoleTest {
         account.deposit(1000);
         account.deposit(500);
         account.withdraw(500);
+        account.printStatement();
 
         verify(printer).print("date || credit || debit || balance\n" +
                 "14/01/2012 || || 500.00 || 2500.00\n" +
