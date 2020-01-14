@@ -1,6 +1,7 @@
-package bank.tests.unit;
+package bank.infrastructure.tests.unit;
 
 import bank.*;
+import bank.infrastructure.Printer;
 import org.junit.Before;
 import org.junit.Test;
 
