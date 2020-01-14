@@ -2,10 +2,8 @@ package bank.infrastructure.tests.acceptance;
 
 import bank.Account;
 import bank.Calendar;
-import bank.TransactionRepository;
 import bank.infrastructure.Printer;
 import bank.infrastructure.TextConsole;
-import bank.infrastructure.TransactionRepositoryInMemory;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -23,8 +21,7 @@ public class PrintingAccountStatementOnConsoleTest {
                 new SimpleDateFormat("dd-MM-yyyy").parse("13-01-2012"),
                 new SimpleDateFormat("dd-MM-yyyy").parse("14-01-2012"));
         TextConsole textConsole = new TextConsole(printer);
-        TransactionRepository transactionRepository = new TransactionRepositoryInMemory();
-        Account account = new Account(calendar, printer, transactionRepository, textConsole);
+        Account account = new Account(calendar, textConsole);
         account.deposit(1000);
         account.deposit(2000);
         account.withdraw(500);

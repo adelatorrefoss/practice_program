@@ -6,18 +6,17 @@ import java.util.List;
 
 public class Account {
     private final Calendar calendar;
-    private final Printer printer;
     private TransactionRepository transactionRepository;
     private Console console;
 
-    public Account(Calendar calendar, Printer printer) {
+    public Account(Calendar calendar, Console console) {
         this.calendar = calendar;
-        this.printer = printer;
+        this.console = console;
+        this.transactionRepository = new TransactionRepositoryInMemory();
     }
 
     public Account(Calendar calendar, Printer printer, TransactionRepository transactionRepository, Console console) {
         this.calendar = calendar;
-        this.printer = printer;
         this.transactionRepository = transactionRepository;
         this.console = console;
     }
