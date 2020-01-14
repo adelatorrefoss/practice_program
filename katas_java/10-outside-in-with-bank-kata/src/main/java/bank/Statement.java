@@ -1,11 +1,10 @@
 package bank;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Statement {
-    List lines = new ArrayList();
+    public ArrayList lines = new ArrayList();
 
     @Override
     public boolean equals(Object o) {
@@ -18,5 +17,12 @@ public class Statement {
     @Override
     public int hashCode() {
         return Objects.hash(lines);
+    }
+
+    @Override
+    public String toString() {
+        return "Statement{" +
+                "lines=" + lines +
+                '}';
     }
 }

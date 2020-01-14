@@ -3,7 +3,6 @@ package bank.tests.unit;
 import bank.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentMatcher;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,6 +52,22 @@ public class AccountTest {
     public void print_an_empty_statement() {
         account.printStatement();
         Statement statement = new Statement();
+        verify(console).print(statement);
+    }
+
+    @Test
+    public void print_a_statement() throws ParseException {
+        Date today = new SimpleDateFormat("dd-MM-yyyy").parse("10-01-2012");
+        Date tomorrow = new SimpleDateFormat("dd-MM-yyyy").parse("11-01-2012");
+        when(calendar.today()).thenReturn(today, tomorrow);
+        account.deposit(1000);
+        account.withdraw(400);
+
+        account.printStatement();
+        Statement statement = new Statement();
+        statement.lines.add(new StatementLine(tomorrow, -400, 600));
+        statement.lines.add(new StatementLine(today, 1000, 600));
+
         verify(console).print(statement);
     }
 }
