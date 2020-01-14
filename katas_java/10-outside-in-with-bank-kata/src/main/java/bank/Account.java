@@ -1,5 +1,7 @@
 package bank;
 
+import java.util.List;
+
 public class Account {
     private final Calendar calendar;
     private final Printer printer;
@@ -28,6 +30,18 @@ public class Account {
     }
 
     public void printStatement() {
-        console.print(new Statement());
+        Statement statement = new Statement();
+
+        List<Transaction> transactions = transactionRepository.list();
+        int balance = 0;
+        for (Transaction transaction : transactions) {
+            statement.lines.add(new StatementLine(
+                    transaction.getOperationDate(),
+                    transaction.getAmount(),
+                    balance += transaction.getAmount()
+            ));
+        }
+
+        console.print(statement);
     }
 }

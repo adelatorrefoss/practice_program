@@ -1,10 +1,11 @@
 package bank;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Statement {
-    public ArrayList lines = new ArrayList();
+    public List<StatementLine> lines = new ArrayList();
 
     @Override
     public boolean equals(Object o) {

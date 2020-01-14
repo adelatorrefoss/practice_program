@@ -4,18 +4,26 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Transaction {
-    private final Date today;
+    private final Date operationDate;
     private final int amount;
 
-    public Transaction(Date today, int amount) {
-        this.today = today;
+    public Transaction(Date operationDate, int amount) {
+        this.operationDate = operationDate;
         this.amount = amount;
+    }
+
+    public Date getOperationDate() {
+        return operationDate;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
-                "today=" + today +
+                "today=" + operationDate +
                 ", amount=" + amount +
                 '}';
     }
@@ -26,12 +34,12 @@ public class Transaction {
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
         return amount == that.amount &&
-                today.equals(that.today);
+                operationDate.equals(that.operationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(today, amount);
+        return Objects.hash(operationDate, amount);
     }
 
 }
