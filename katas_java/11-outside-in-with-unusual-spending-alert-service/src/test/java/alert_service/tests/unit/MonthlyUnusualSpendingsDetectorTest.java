@@ -59,4 +59,36 @@ public class MonthlyUnusualSpendingsDetectorTest {
         assertTrue(result.isEmpty());
     }
 
+    @Test
+    public void should_return_unusual_expenses_in_one_category_and_one_payment() {
+        int userId = 100;
+        Date januaryDate = Date.valueOf("2020-01-31");
+        Date decemberDate = Date.valueOf("2020-12-31");
+        String anyCategory = "Gasolina";
+        List<Payment> januaryPayments = Arrays.asList(
+                new Payment(anyCategory, 30, Date.valueOf("2019-12-20"))
+        );
+        int currentMonthSpending = 45;
+        List<Payment> decemberPayments = Arrays.asList(
+                new Payment(anyCategory, currentMonthSpending, Date.valueOf("2020-01-01"))
+        );
+
+        DateProvider dateProvider = mock(DateProvider.class);
+        when(dateProvider.currentMonth()).thenReturn(januaryDate);
+        when(dateProvider.previousMonth()).thenReturn(decemberDate);
+
+        PaymentRepository paymentRepository = mock(PaymentRepository.class);
+        when(paymentRepository.getPaymentsByMonth(userId, decemberDate)).thenReturn(decemberPayments);
+        when(paymentRepository.getPaymentsByMonth(userId, januaryDate)).thenReturn(januaryPayments);
+
+        UnusualSpendingsDetector detector = new MonthlyUnusualExpensesDetector(dateProvider, paymentRepository);
+
+        UnusualExpenses expected = new UnusualExpenses(userId, Arrays.asList(
+                new UnusualSpending(anyCategory, currentMonthSpending)
+        ));
+
+        UnusualExpenses result = detector.execute(userId);
+
+        assertEquals(expected, result);
+    }
 }
