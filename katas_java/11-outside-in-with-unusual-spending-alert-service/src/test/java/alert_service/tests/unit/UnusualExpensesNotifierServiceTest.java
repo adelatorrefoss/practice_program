@@ -8,9 +8,12 @@ import java.util.Collections;
 import static org.mockito.Mockito.*;
 
 public class UnusualExpensesNotifierServiceTest {
+
+    public static final int USER_ID = 100;
+
     @Test
     public void should_not_send_any_notification_when_there_are_not_unusual_expenses() {
-        int userId = 100;
+        int userId = USER_ID;
         UnusualSpendingsDetector unusualSpendingDetector = mock(MonthlyUnusualSpendingsDetector.class);
         Notifier notifier = mock(TextMessageNotifier.class);
         when(unusualSpendingDetector.execute(userId)).thenReturn(new UnusualExpenses(userId,
