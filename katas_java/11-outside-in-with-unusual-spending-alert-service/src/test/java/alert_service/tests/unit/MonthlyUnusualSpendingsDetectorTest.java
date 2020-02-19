@@ -18,12 +18,19 @@ public class MonthlyUnusualSpendingsDetectorTest {
      * No payments at all
      * No payments in current month
      * No payments in previous month
-     * No unusual spending in one category
+     *
+     * > No unusual spending in one category
      * No unusual spending in many category
-     * No unusual spending in one category and only one payment
      * No unusual spending in one category and many payments
-     * Unusual spending
+     *
+     * Unusual spending in one category and only one payment
+     *
+     * No unusual spending in one payment but different category
+     *
+     * Another user
      */
+
+
     @Test
     public void should_return_empty_unusual_expenses_if_there_are_not_unusual_spending() {
         int userId = 100;
