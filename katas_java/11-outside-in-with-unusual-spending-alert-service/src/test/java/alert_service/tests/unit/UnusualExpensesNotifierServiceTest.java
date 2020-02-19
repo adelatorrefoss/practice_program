@@ -15,7 +15,7 @@ public class UnusualExpensesNotifierServiceTest {
     @Test
     public void should_not_send_any_notification_when_there_are_not_unusual_expenses() {
         int userId = USER_ID;
-        UnusualSpendingsDetector unusualSpendingDetector = mock(MonthlyUnusualSpendingsDetector.class);
+        UnusualSpendingsDetector unusualSpendingDetector = mock(MonthlyUnusualExpensesDetector.class);
         Notifier notifier = mock(TextMessageNotifier.class);
         when(unusualSpendingDetector.execute(userId)).thenReturn(new UnusualExpenses(userId,
                 Collections.emptyList()
@@ -31,7 +31,7 @@ public class UnusualExpensesNotifierServiceTest {
     @Test
     public void should_send_a_notification_when_there_are_unusual_expenses() {
         int userId = USER_ID;
-        UnusualSpendingsDetector unusualSpendingDetector = mock(MonthlyUnusualSpendingsDetector.class);
+        UnusualSpendingsDetector unusualSpendingDetector = mock(MonthlyUnusualExpensesDetector.class);
         Notifier notifier = mock(TextMessageNotifier.class);
         double anyAmount = 1.0;
         String anyCategory = "AnyCategory";
