@@ -11,7 +11,6 @@ public class UnusualSpendingsNotifierService {
 
   public UnusualSpendingsNotifierService(PaymentRepository paymentRepository, UserRepository userRepository, DateProvider dateProvider,
       AlertSender alertSender) {
-
     this.paymentRepository = paymentRepository;
     this.userRepository = userRepository;
     this.dateProvider = dateProvider;
@@ -19,7 +18,6 @@ public class UnusualSpendingsNotifierService {
   }
 
   public UnusualSpendingsNotifierService(UnusualSpendingsDetector unusualSpendingDetector, Notifier notifier) {
-
     this.unusualSpendingDetector = unusualSpendingDetector;
     this.notifier = notifier;
   }

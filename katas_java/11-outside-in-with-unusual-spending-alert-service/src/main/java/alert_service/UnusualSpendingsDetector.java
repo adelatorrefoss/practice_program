@@ -1,7 +1,5 @@
 package alert_service;
 
-public class UnusualSpendingsDetector {
-    public UnusualExpenses execute(int userId) {
-        return null;
-    };
+public interface UnusualSpendingsDetector {
+    UnusualExpenses execute(int userId);
 }

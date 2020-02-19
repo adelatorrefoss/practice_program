@@ -46,12 +46,15 @@ public class AlertingUsersWithUnusualExpensesTest {
         PaymentRepository paymentRepository = mock(PaymentRepository.class);
         when(paymentRepository.getPaymentsByMonth(userId, decemberDate)).thenReturn(decemberPayments);
         when(paymentRepository.getPaymentsByMonth(userId, januaryDate)).thenReturn(januaryPayments);
+
         UserRepository userRepository = mock(UserRepository.class);
         when(userRepository.find(userId)).thenReturn(recipient);
+
         DateProvider dateProvider = mock(DateProvider.class);
         when(dateProvider.currentMonth()).thenReturn(januaryDate);
-        AlertSender alertSender = mock(AlertSender.class);
         when(dateProvider.previousMonth()).thenReturn(decemberDate);
+
+        AlertSender alertSender = mock(AlertSender.class);
 
         UnusualSpendingsNotifierService unusualSpendingsNotifierService =
                 new UnusualSpendingsNotifierService(paymentRepository, userRepository, dateProvider, alertSender);

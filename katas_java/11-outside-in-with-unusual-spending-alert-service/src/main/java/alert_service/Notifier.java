@@ -1,6 +1,5 @@
 package alert_service;
 
-public class Notifier {
-    public void send(UnusualExpenses unusualExpenses) {
-    }
+public interface Notifier {
+    void send(UnusualExpenses unusualExpenses);
 }
