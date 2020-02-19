@@ -33,7 +33,7 @@ public class MonthlyUnusualSpendingsDetectorTest {
                 new Payment("Gasolina", 30, Date.valueOf("2019-12-20"))
         );
         List<Payment> decemberPayments = Arrays.asList(
-                new Payment("Gasolina", 20, Date.valueOf("2020-01-01"))
+                new Payment("Gasolina", 44, Date.valueOf("2020-01-01"))
         );
 
         DateProvider dateProvider = mock(DateProvider.class);
